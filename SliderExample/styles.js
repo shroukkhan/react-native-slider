@@ -7,6 +7,10 @@ const COLORS = {
     WHITE: "white",
 };
 
+export const aboveThumbStyles = StyleSheet.create({
+    wrapper: {backgroundColor: "grey", height: 40, width: 100},
+});
+
 export const styles = StyleSheet.create({
     container: {
         alignItems: "stretch",

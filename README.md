@@ -1,9 +1,9 @@
 # react-native-slider
 
-[![npm version](http://img.shields.io/npm/v/react-native-slider.svg?style=flat-square)](https://npmjs.org/package/react-native-slider "View this project on npm")
-[![npm downloads](http://img.shields.io/npm/dm/react-native-slider.svg?style=flat-square)](https://npmjs.org/package/react-native-slider "View this project on npm")
-[![npm licence](http://img.shields.io/npm/l/react-native-slider.svg?style=flat-square)](https://npmjs.org/package/react-native-slider "View this project on npm")
-[![Platform](https://img.shields.io/badge/platform-ios%20%7C%20android-989898.svg?style=flat-square)](https://npmjs.org/package/react-native-slider "View this project on npm")
+[![npm version](https://img.shields.io/npm/v/@miblanchard/react-native-slider.svg?style=flat-square)](https://npmjs.org/package/@miblanchard/react-native-slider "View this project on npm")
+[![npm downloads](http://img.shields.io/npm/dm/@miblanchard/react-native-slider.svg?style=flat-square)](https://npmjs.org/package/@miblanchard/react-native-slider "View this project on npm")
+[![npm licence](http://img.shields.io/npm/l/@miblanchard/react-native-slider.svg?style=flat-square)](https://npmjs.org/package/@miblanchard/react-native-slider "View this project on npm")
+[![Platform](https://img.shields.io/badge/platform-ios%20%7C%20android-989898.svg?style=flat-square)](https://npmjs.org/package/@miblanchard/react-native-slider "View this project on npm")
 
 A pure JavaScript `<Slider>` component for react-native. This is still very much a work
 in progress, ideas and contributions are very welcome.
@@ -103,7 +103,7 @@ Try this example [live on Expo Snack](https://snack.expo.io/HkbAqpbwb).
 | thumbTouchSize        | object                                                                  | Yes      | `{width: 40, height: 40}` | The size of the touch area that allows moving the thumb. The touch area has the same center as the visible thumb. This allows to have a visually small thumb while still allowing the user to move it easily.                                                                    |
 | trackClickable        | bool                                                                    | Yes      | false                     | If true the user will be able to click anywhere on the track to set the value to that position.                                                                                                                                                                                  |
 | trackStyle            | [style](http://facebook.github.io/react-native/docs/view.html#style)    | Yes      |                           | The style applied to the track                                                                                                                                                                                                                                                   |
-| value                 | number                                                                  | Yes      | 0                         | Initial value of the slider. The value should be between minimumValue and maximumValue, which default to 0 and 1 respectively. Default value is 0.  *This is not a controlled component*, e.g. if you don't update  the value, the component won't be reset to its inital value. |
+| value                 | number or Array                                                                  | Yes      | 0                | Initial value of the slider. The value should be a number or array of numbers between minimumValue and maximumValue, which default to 0 and 1 respectively. Default value is 0.  *This is not a controlled component*, e.g. if you don't update  the value, the component won't be reset to its inital value. |
 
 ---
 
