@@ -13,8 +13,10 @@ import {
 import {defaultStyles} from "./styles";
 
 // types
-import type {GestureState, PressEvent, ViewLayoutEvent} from "react-native";
 import type {ChangeEvent, SliderProps, SliderState} from "./types";
+import type {GestureState} from "react-native/Libraries/Interaction/PanResponder";
+import type {PressEvent} from "react-native/Libraries/Types/CoreEventTypes";
+import type {ViewLayoutEvent} from "react-native/Libraries/Components/View/ViewPropTypes";
 
 function Rect(x: number, y: number, width: number, height: number) {
     this.x = x;
@@ -47,6 +49,7 @@ const DEFAULT_ANIMATION_CONFIGS = {
         delay: 0,
     },
 };
+
 function normalizePropValue(props: SliderProps): Array<number> {
     const {maximumValue, minimumValue, value} = props;
     const getBetweenValue = (inputValue: number) =>
@@ -58,10 +61,18 @@ function normalizePropValue(props: SliderProps): Array<number> {
 }
 
 function updateValues(
-    values: number | Array<number>,
-    newValues: number | Array<number> = values
+    values: number | Array<number> | Animated.Value | Array<Animated.Value>,
+    newValues:
+        | number
+        | Array<number>
+        | Animated.Value
+        | Array<Animated.Value> = values
 ) {
-    if (newValues.length !== values.length) {
+    if (
+        Array.isArray(values) &&
+        Array.isArray(newValues) &&
+        newValues.length !== values.length
+    ) {
         return updateValues(newValues);
     }
 
@@ -302,7 +313,7 @@ export class Slider extends PureComponent<SliderProps, SliderState> {
         const animationConfig = Object.assign(
             {},
             DEFAULT_ANIMATION_CONFIGS[animationType],
-            this.props.animationConfig,
+            this.props.animationConfig[animationType],
             {
                 toValue: value,
             }
@@ -538,10 +549,8 @@ export class Slider extends PureComponent<SliderProps, SliderState> {
                                 : defaultStyles.thumb,
                             !!renderThumbComponent
                                 ? {}
-                                : {
-                                      backgroundColor: thumbTintColor,
-                                      ...thumbStyle,
-                                  },
+                                : {backgroundColor: thumbTintColor},
+                            thumbStyle,
                             {
                                 transform: [
                                     {translateX: value},
